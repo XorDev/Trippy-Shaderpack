@@ -1,9 +1,12 @@
 #version 120
 
 #define Color 1. //Rainbow intensity [.0 .2 .5 .8 1.]
+#define Animation 0. //Animation speed [.0 .2 .5 .8 1.]
+#define Spread .5 //Color Spread [.0 .2 .5 .8 1.]
 
 uniform sampler2D texture;
 
+uniform float frameTimeCounter;
 uniform float blindness;
 uniform int isEyeInWater;
 
@@ -31,8 +34,8 @@ void main()
     float fog = (isEyeInWater>0) ? 1.-exp(-gl_FogFragCoord * gl_Fog.density):
     clamp((gl_FogFragCoord-gl_Fog.start) * gl_Fog.scale, 0., 1.);
 
-    vec4 col = vec4(vec3(value3(world*.02)*8.+value3((world+world.zxy)*.04)*3.),0)*light;
-    col = mix(color,vec4(cos(color.rgb*3.+col.rgb)*.5+.5,color.a),Color);
+    vec4 col = vec4(vec3(value3(world*.04*Spread)*8.+value3((world+world.zxy)*.1*Spread)*3.),0)*light;
+    col = mix(color,vec4(cos(color.rgb*3.+col.rgb+frameTimeCounter*Animation)*.5+.5,color.a),Color);
     col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
 
     gl_FragData[0] = col;

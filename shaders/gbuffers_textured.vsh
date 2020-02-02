@@ -3,7 +3,7 @@
 #define Radius 16. //Globe radius [4. 10. 12. 16. 24. 32.]
 #define Toggle 1. //Enable, disable or invert globe [-1. 0. 1.]
 
-#define Terrain .4 //Terrain distortion level [.2 .4 .6 .8 1.]
+#define Terrain .4 //Terrain distortion level [.0 .2 .4 .6 .8 1.]
 #define Offset 1. //Camera height offset [.0 1.]
 
 #define Amount .2 //Wave distortion intensity [.0 .2 .5 .8 1.]

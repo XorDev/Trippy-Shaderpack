@@ -1,6 +1,6 @@
 #version 120
 
-#define Terrain .4 //Terrain distortion level [.2 .4 .6 .8 1.]
+#define Terrain .4 //Terrain distortion level [.0 .2 .4 .6 .8 1.]
 #define Hand 1. //Hand distortion level [.0 1.]
 #define Offset 1. //Camera height offset [.0 1.]
 

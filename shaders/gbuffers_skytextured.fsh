@@ -1,9 +1,12 @@
 #version 120
 
 #define Color 1. //Rainbow intensity [.0 .2 .5 .8 1.]
+#define Animation 0. //Animation speed [.0 .2 .5 .8 1.]
+#define Spread .5 //Color Spread [.0 .2 .5 .8 1.]
 
 uniform sampler2D texture;
 
+uniform float frameTimeCounter;
 uniform float blindness;
 
 varying vec4 color;
@@ -29,6 +32,6 @@ void main()
     float light = 1.-blindness;
 
     vec4 tex = texture2D(texture,coord0);
-    vec3 col = value3(world*.02)*8.+value3((world+world.zxy)*.04)*3.;
+    vec3 col = value3(world*.04)*8.+value3((world+world.zxy)*.1*Spread)*3.+frameTimeCounter*Animation;
     gl_FragData[0] = color * mix(tex, tex * vec4((cos(col)*.5+.5)*light,1), Color);
 }

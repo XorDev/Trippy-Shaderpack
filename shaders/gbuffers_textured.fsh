@@ -1,6 +1,9 @@
 #version 120
 
 #define Color 1. //Rainbow intensity [.0 .2 .5 .8 1.]
+#define Animation 0. //Animation speed [.0 .2 .5 .8 1.]
+#define Spread .5 //Color Spread [.0 .2 .5 .8 1.]
+
 #define Shininess 1. //Water shine intensity [.0 .5 1.]
 
 uniform sampler2D texture;
@@ -10,6 +13,7 @@ uniform mat4 gbufferModelViewInverse;
 uniform vec4 entityColor;
 uniform vec3 shadowLightPosition;
 uniform vec3 skyColor;
+uniform float frameTimeCounter;
 uniform float blindness;
 uniform int isEyeInWater;
 
@@ -49,8 +53,8 @@ void main()
 
     vec3 light = (lambert*.5+.5)*(1.-blindness) * texture2D(lightmap,coord1).rgb + shine;
     vec4 tex = color * texture2D(texture,coord0);
-    vec4 col = vec4(value3(model*.1)*8.+value3((model+model.zxy)*.2)*3.,1);
-    col = mix(tex, vec4(cos(tex.rgb*3.+col.rgb)*.5+.5,tex.a), Color) * vec4(light,1);
+    vec4 col = vec4(value3(model*.2*Spread)*8.+value3((model+model.zxy)*.4*Spread)*3.,1);
+    col = mix(tex, vec4(cos(tex.rgb*3.+col.rgb+frameTimeCounter*Animation)*.5+.5,tex.a), Color) * vec4(light,1);
     col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
     col.rgb = mix(col.rgb, entityColor.rgb, entityColor.a);
     gl_FragData[0] = col;
