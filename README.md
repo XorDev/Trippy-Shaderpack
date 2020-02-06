@@ -2,7 +2,8 @@
 Here's a conglomeration my crazy Minecraft shaders all in one shaderpack!
 There are plenty of options to tweak.
 
-To install, download this and insert it in the .minecraft/shaderpacks folder. If you want to save space you can extract the zip and delete everything outside (screenshots, github stuff) of the shaders folder.
+To use this pack, [download the shaders here](https://github.com/XorDev/Trippy-Shaderpack/archive/Trippypack.zip) and put them in you .minecraft/shaderpacks folder.
+NOTE: You need to get [Optifine](https://optifine.net/downloads) first!
 
 ![Concave](/screenshots/concave.png)
 ![Tinted](/screenshots/tinted.png)
