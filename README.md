@@ -1,6 +1,5 @@
 # Trippy-Shaderpack
-Here's a conglomeration my crazy Minecraft shaders all in one shaderpack!
-There are plenty of options to tweak.
+Here's a conglomeration of my crazy Minecraft shaders all in one shaderpack! There are plenty of settings to tweak waviness, color intensity, distortion, curvature and more.
 
 To use this pack, [download the shaders here](https://github.com/XorDev/Trippy-Shaderpack/archive/master.zip) and put them in you .minecraft/shaderpacks folder.
 NOTE: You need to get [Optifine](https://optifine.net/downloads) first!
